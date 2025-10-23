@@ -1,38 +1,24 @@
-// const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service')
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
-// module.exports = defineConfig({
-//   transpileDependencies: true,
-//   configureWebpack: {
-//     plugins: [
-//       AutoImport({
-//         resolvers: [ElementPlusResolver()]
-//       }),
-//       Components({
-//         resolvers: [ElementPlusResolver()]
-//       })
-//     ]
-//   }
-// })
 const path = require('path')
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 const webpack = require('webpack')
-module.exports = {
-  configureWebpack: (config) => {
-    config.plugins.push(
+module.exports = defineConfig({
+  transpileDependencies: true,
+  configureWebpack: {
+    plugins: [
       AutoImport({
         resolvers: [ElementPlusResolver()]
-      })
-    )
-    config.plugins.push(
+      }),
       Components({
         resolvers: [ElementPlusResolver()]
       })
-    )
+    ]
   },
   chainWebpack(config) {
     // 设置 svg-sprite-loader
@@ -80,4 +66,18 @@ module.exports = {
       })
       .end()
   }
-}
+})
+// module.exports = {
+//   configureWebpack: (config) => {
+//     config.plugins.push(
+//       AutoImport({
+//         resolvers: [ElementPlusResolver()]
+//       })
+//     )
+//     config.plugins.push(
+//       Components({
+//         resolvers: [ElementPlusResolver()]
+//       })
+//     )
+//   }
+// }
