@@ -65,19 +65,19 @@ module.exports = defineConfig({
         symbolId: 'icon-[name]'
       })
       .end()
+  },
+  devServer: {
+    https: false, //是否https,默认为false,表示使用http协议,数据不加密
+    hot: 'only', //仅使用热更新，热更新失败时不刷新页面
+    proxy: {
+      '/api': {
+        // target: 'https://lianghj.top:8888/api/private/v1/', //接口地址
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '' //路径重写,将'/api'改为''
+        }
+      }
+    }
   }
 })
-// module.exports = {
-//   configureWebpack: (config) => {
-//     config.plugins.push(
-//       AutoImport({
-//         resolvers: [ElementPlusResolver()]
-//       })
-//     )
-//     config.plugins.push(
-//       Components({
-//         resolvers: [ElementPlusResolver()]
-//       })
-//     )
-//   }
-// }
