@@ -107,6 +107,13 @@ $cursor: #fff;
         caret-color: $cursor;
       }
     }
+
+    :deep(.el-input__wrapper) {
+      background-color: transparent;
+      border: 0px;
+      box-shadow: 0 0 0 0;
+      width: 100%;
+    }
     .login-button {
       width: 100%;
       box-sizing: border-box;
