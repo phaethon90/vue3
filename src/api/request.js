@@ -9,7 +9,7 @@ const service = axios.create({
 //响应拦截器
 service.interceptors.response.use(
   (response) => {
-    console.log(response)
+    // console.log(response)
     const { data, code, message } = response.data //解构取出数据，此处code为状态值
     //请求响应成功
     if (code === 200 || code === 201) {
@@ -26,16 +26,5 @@ service.interceptors.response.use(
     error.response && ElMessage.error(error.response.data.message)
     return Promise.reject(new Error(error.response.data.message))
   }
-  // (error) => {
-  //   if (error.response) {
-  //     const message = error.response.data.message || '请求失败'
-  //     ElMessage.error(message)
-  //     return Promise.reject(new Error(message)) // 返回 Error 对象而不是字符串
-  //   } else {
-  //     const message = error.message || '网络错误'
-  //     ElMessage.error(message)
-  //     return Promise.reject(new Error(message))
-  //   }
-  // }
 )
 export default service

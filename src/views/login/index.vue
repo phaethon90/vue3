@@ -41,16 +41,18 @@ const rules = ref({
 })
 
 const formRef = ref(null)
-const handleLogin = () => {
-  formRef.value.validate(async (valid) => {
+const handleLogin = async () => {
+  try {
+    //先验证表单
+    const valid = await formRef.value.validate()
     if (valid) {
-      store.dispatch('app/login', form.value)
-    } else {
-      console.log('error submit!')
+      await store.dispatch('app/login', form.value)
     }
-  })
+  } catch (error) {
+    //捕获抛出的异常
+    console.log('error submit!')
+  }
 }
-
 const passwordType = ref('password')
 const changeType = () => {
   if (passwordType.value === 'password') {

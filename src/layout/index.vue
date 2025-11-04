@@ -1,6 +1,6 @@
 <template>
   <el-container class="app-wrapper">
-    <el-aside width="200px" class="sidebar-container">Aside</el-aside>
+    <el-aside width="200px" class="sidebar-container">侧栏</el-aside>
     <el-container class="container">
       <el-header>Header</el-header>
       <el-main>Main</el-main>
