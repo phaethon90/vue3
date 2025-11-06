@@ -46,7 +46,11 @@ const icon = ref('menu') //二级图标
 const defaultActive = ref(sessionStorage.getItem('path') || '/users')
 const menusList = ref([])
 const initMenusList = async () => {
-  menusList.value = await menuList()
+  try {
+    menusList.value = await menuList()
+  } catch {
+    console.log('token已失效')
+  }
 }
 initMenusList()
 
