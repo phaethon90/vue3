@@ -1,15 +1,13 @@
 import { createI18n } from 'vue-i18n'
-
+import ZH from './zh'
 const messages = {
-  en: {
-    msg: {
-      title: 'user login'
-    }
-  },
+  // en: {
+  //   msg: {
+  //     title: 'user login'
+  //   }
+  // },
   zh: {
-    msg: {
-      title: '用户登录'
-    }
+    ...ZH
   }
 }
 
